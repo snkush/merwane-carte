@@ -6,6 +6,16 @@
 <title>Merwane</title>
 <meta name="description" content="Merwane, Marseille. SNK Records, 444, Kloud, Doggo, Elevate X.">
 <meta name="robots" content="noindex">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Merwane">
+<meta property="og:description" content="Marseille · Marrakech · Barcelone. SNK Records, 444, Kloud, Doggo, Elevate X.">
+<meta property="og:url" content="https://merwane.snk-records.com/">
+<meta property="og:image" content="https://merwane.snk-records.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="icon-192.png">
 <meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
@@ -27,7 +37,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 5; pointer-events
 ::selection { background: var(--encre); color: var(--fond); }
 
 /* En-tête : le recto de la carte « Lune ». Le disque entre par la droite, le nom s'inverse en le traversant. */
-.tete { position: relative; isolation: isolate; height: 76svh; min-height: 380px; overflow: hidden; display: grid; place-items: center; background: var(--fond); }
+.tete { position: relative; isolation: isolate; height: 68svh; min-height: 360px; overflow: hidden; display: grid; place-items: center; background: var(--fond); }
 .tete { --lueur: rgba(255, 222, 180, .2); --sillon: rgba(255, 255, 255, .04); --reflet: rgba(255, 220, 175, .15); --halo: rgba(11, 12, 14, .24); }
 @media (prefers-color-scheme: dark) { .tete { --lueur: #fff; --sillon: rgba(11, 12, 14, .05); --reflet: rgba(110, 80, 30, .16); --halo: rgba(244, 242, 236, .16); } }
 /* Le disque a du volume : une lueur qui suit le pointeur, des sillons à peine visibles, un reflet chaud qui tourne lentement. */
@@ -39,7 +49,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 5; pointer-events
 @keyframes lever { from { translate: 60vw -50%; } }
 @keyframes passe { to { transform: translateX(-35%); } }
 @supports (animation-timeline: scroll()) {
-  .lune { animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both, passe linear both; animation-timeline: auto, scroll(root); animation-range: normal, 0 76svh; }
+  .lune { animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both, passe linear both; animation-timeline: auto, scroll(root); animation-range: normal, 0 68svh; }
 }
 h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: clamp(22px, 6.4vw, 46px); white-space: nowrap; font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: .36em; text-indent: .36em; line-height: 1; }
 /* Le nom arrive lettre par lettre. */
@@ -47,6 +57,14 @@ h1 span { display: inline-block; animation: monte 1s cubic-bezier(.16, 1, .3, 1)
 @keyframes monte { from { opacity: 0; translate: 0 .7em; filter: blur(8px); } }
 .lieu { margin-top: 14px; font-size: 12px; letter-spacing: .22em; text-indent: .22em; text-transform: uppercase; color: var(--doux); }
 .actions { margin: 32px 0 56px; display: grid; gap: 12px; }
+/* Sous le bouton principal, les autres façons de garder le lien : écrire, suivre, faire passer la page. */
+.rang [hidden] { display: none; }
+.rang { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 12px; }
+.rang .bouton { min-height: 48px; padding: 0 8px; font-size: 14px; border-color: var(--filet); font-family: inherit; background: none; color: inherit; cursor: pointer; }
+/* Le bouton principal reste à portée de pouce une fois qu'on a défilé. */
+.barre { position: fixed; left: 0; right: 0; bottom: 0; z-index: 4; padding: 10px 24px calc(10px + env(safe-area-inset-bottom)); background: var(--fond); border-top: 1px solid var(--filet); translate: 0 100%; visibility: hidden; transition: translate .4s cubic-bezier(.16, 1, .3, 1), visibility 0s .4s; }
+.barre.vue { translate: 0 0; visibility: visible; transition-delay: 0s; }
+.barre .bouton { max-width: 412px; margin: 0 auto; min-height: 48px; }
 .bouton { display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 20px; font-size: 16px; font-weight: 500; border: 1px solid var(--encre); transition: background-color .2s ease, color .2s ease; }
 .bouton.plein { background: var(--encre); color: var(--fond); }
 @media (hover: hover) {
@@ -115,10 +133,11 @@ h3 { margin: 24px 0 0; font-size: 28px; font-weight: 600; line-height: 1.1; lett
 .pochettes span { display: block; margin-top: 10px; font-size: 13px; line-height: 1.3; color: var(--doux); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .2s ease; }
 @media (hover: hover) { .pochettes a:hover img { scale: 1.03; } .pochettes a:hover span { color: var(--encre); } }
 
-footer { padding: 56px 0 72px; text-align: center; font-size: 14px; color: var(--doux); }
+footer { padding: 56px 0 120px; text-align: center; font-size: 14px; color: var(--doux); }
 section + section { margin-top: 56px; }
 footer .lieu { margin: 0 0 18px; letter-spacing: .14em; text-indent: .14em; white-space: nowrap; }
 footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-bottom: 2px; }
+footer a + a { margin-left: 22px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .lune, .lune::after, h1 span, .villes div, .tuiles a::before, .disque { animation: none; } }
 </style>
 </head>
@@ -131,6 +150,11 @@ footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-b
 <main>
   <div class="actions">
     <a class="bouton plein" href="merwane.vcf" download="Merwane.vcf">Enregistrer le contact</a>
+    <div class="rang">
+      <a class="bouton" href="mailto:merwane.snk@gmail.com">Écrire</a>
+      <a class="bouton" href="https://www.instagram.com/merwane.snk/">Instagram</a>
+      <button class="bouton" type="button" id="partage" hidden>Partager</button>
+    </div>
   </div>
 
   <section aria-labelledby="t-projets">
@@ -177,9 +201,10 @@ footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-b
   <div class="villes" role="img" aria-label="Marseille, Marrakech, Barcelone"><div aria-hidden="true"><span>Marseille</span><span>Marrakech</span><span>Barcelone</span><span>Marseille</span><span>Marrakech</span><span>Barcelone</span><span>Marseille</span><span>Marrakech</span><span>Barcelone</span><span>Marseille</span><span>Marrakech</span><span>Barcelone</span></div></div>
 
   <footer>
-    <a href="mailto:merwane.snk@gmail.com">merwane.snk@gmail.com</a>
+    <a href="mailto:merwane.snk@gmail.com">merwane.snk@gmail.com</a><a href="https://www.instagram.com/merwane.snk/">Instagram</a>
   </footer>
 </main>
+<div class="barre"><a class="bouton plein" href="merwane.vcf" download="Merwane.vcf" tabindex="-1">Enregistrer le contact</a></div>
 <script>
 /* Le disque d'encre part de l'endroit où le pointeur entre dans la tuile. */
 document.querySelectorAll(".tuiles a").forEach(function (a) {
@@ -196,6 +221,21 @@ tete.addEventListener("pointermove", function (e) {
   lune.style.setProperty("--sx", (e.clientX - r.left) / r.width * 100 + "%");
   lune.style.setProperty("--sy", (e.clientY - r.top) / r.height * 100 + "%");
 });
+/* Partager : seulement là où le téléphone sait le faire. */
+var partage = document.getElementById("partage");
+if (navigator.share) {
+  partage.hidden = false;
+  partage.addEventListener("click", function () {
+    navigator.share({ title: "Merwane", url: "https://merwane.snk-records.com/" }).catch(function () {});
+  });
+}
+/* La barre du bas apparaît quand le bouton principal est passé au-dessus de l'écran. */
+var barre = document.querySelector(".barre"), lien = barre.querySelector("a");
+if ("IntersectionObserver" in window) new IntersectionObserver(function (e) {
+  var vue = !e[0].isIntersecting && e[0].boundingClientRect.top < 0;
+  barre.classList.toggle("vue", vue);
+  lien.tabIndex = vue ? 0 : -1;
+}).observe(document.querySelector(".actions .plein"));
 </script>
 </body>
 </html>
