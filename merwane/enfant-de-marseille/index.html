@@ -50,6 +50,7 @@
     <p><a href="/merwane/">Toute la musique de Merwane</a></p>
   </footer>
 </main>
+<script>(function(){var t=document.querySelector('.tri');if(!t)return;t.hidden=false;t.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var g=b.dataset.g;function f(){t.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.sorties li').forEach(function(li){li.hidden=!!g&&li.dataset.g!==g})}if(document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.startViewTransition(f);else f()})})();</script>
 <script>(function(){var l=document.querySelector('.liens');if(!l||!/iPhone|iPad|Macintosh/.test(navigator.userAgent))return;var s=l.querySelector('[data-p=spotify].plein'),a=l.querySelector('[data-p=apple]');if(s&&a){s.classList.remove('plein');a.classList.add('plein');l.prepend(a.parentNode);}})();</script>
 </body>
 </html>
