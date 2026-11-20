@@ -45,9 +45,15 @@ h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: 22p
 h2 { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--doux); text-align: center; padding-bottom: 20px; }
 .projets { list-style: none; padding: 0; border-top: 1px solid var(--filet); }
 .projets a { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--filet); }
-.projets a:has(.marque) { grid-template-columns: 52px 1fr auto; }
-/* Les logos sont des masques : ils prennent la couleur de l'encre, en clair comme en sombre. */
-.marque { width: 52px; height: 44px; background: var(--encre); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+/* Les projets : une tuile par marque, le logo au-dessus, le nom en dessous. Les logos sont des masques, ils prennent la couleur de l'encre. */
+.tuiles { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tuiles li:first-child { grid-column: 1 / -1; }
+.tuiles a { display: flex; flex-direction: column; align-items: center; height: 100%; padding: 32px 14px 26px; text-align: center; border: 1px solid var(--filet); transition: border-color .2s ease; }
+.tuiles a:active { opacity: .7; }
+@media (hover: hover) { .tuiles a:hover { border-color: var(--encre); } }
+.marque { display: block; width: 100%; height: 60px; margin-bottom: 22px; background: var(--encre); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.tuiles b { font-size: 17px; font-weight: 600; }
+.tuiles span { margin-top: 4px; font-size: 13px; line-height: 1.4; color: var(--doux); text-wrap: balance; }
 .projets b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -.005em; }
 .projets span { display: block; margin-top: 2px; font-size: 14px; color: var(--doux); }
 .projets svg { width: 18px; height: 18px; color: var(--doux); transition: translate .2s ease, color .2s ease; }
@@ -80,12 +86,12 @@ footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-b
 
   <section aria-labelledby="t-projets">
     <h2 id="t-projets">Les projets</h2>
-    <ul class="projets">
-      <li><a href="https://snk-records.com"><i class="marque" style="--m:url(logos/snk.svg)" aria-hidden="true"></i><div><b>SNK Records</b><span>Label indépendant et studio</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="https://444maison.com"><i class="marque" style="--m:url(logos/444.svg)" aria-hidden="true"></i><div><b>444</b><span>Streetwear premium</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="https://kloud-music.fr"><i class="marque" style="--m:url(logos/kloud.svg)" aria-hidden="true"></i><div><b>Kloud</b><span>La musique qu'on achète pour la garder</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="mailto:merwane.snk@gmail.com?subject=Doggo"><i class="marque" style="--m:url(logos/doggo.svg)" aria-hidden="true"></i><div><b>Doggo</b><span>L'application de la vie du chien, en préparation</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="mailto:merwane.snk@gmail.com?subject=Elevate%20X"><i class="marque" style="--m:url(logos/elevate-x.svg)" aria-hidden="true"></i><div><b>Elevate X</b><span>Association pour les artistes émergents</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+    <ul class="tuiles">
+      <li><a href="https://snk-records.com"><i class="marque" style="--m:url(logos/snk.svg)" aria-hidden="true"></i><b>SNK Records</b><span>Label indépendant et studio</span></a></li>
+      <li><a href="https://444maison.com"><i class="marque" style="--m:url(logos/444.svg)" aria-hidden="true"></i><b>444</b><span>Streetwear premium</span></a></li>
+      <li><a href="https://kloud-music.fr"><i class="marque" style="--m:url(logos/kloud.svg)" aria-hidden="true"></i><b>Kloud</b><span>La musique qu'on achète pour la garder</span></a></li>
+      <li><a href="mailto:merwane.snk@gmail.com?subject=Doggo"><i class="marque" style="--m:url(logos/doggo.svg)" aria-hidden="true"></i><b>Doggo</b><span>L'application de la vie du chien, en préparation</span></a></li>
+      <li><a href="mailto:merwane.snk@gmail.com?subject=Elevate%20X"><i class="marque" style="--m:url(logos/elevate-x.svg)" aria-hidden="true"></i><b>Elevate X</b><span>Association pour les artistes émergents</span></a></li>
     </ul>
   </section>
 
