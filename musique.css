@@ -119,6 +119,9 @@ section > .titre { margin-top: 0; }
 .sorties span, .bande span { display: block; font-size: 13px; color: var(--doux); }
 @media (hover: hover) { .bande a:hover img { scale: 1.03; } }
 
+.compte { margin: 14px 0 0; font-size: 15px; color: var(--doux); font-variant-numeric: tabular-nums; }
+.compte b { font-weight: 600; color: var(--encre); }
+.compte i { margin: 0 .6em; font-style: normal; }
 .tout { margin: 10px 0 22px; font-size: 14px; color: var(--doux); }
 .tout a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-bottom: 2px; }
 
