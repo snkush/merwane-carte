@@ -91,18 +91,35 @@ h2 { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: u
 .projets svg { width: 18px; height: 18px; color: var(--doux); transition: translate .2s ease, color .2s ease; }
 @media (hover: hover) { .projets a:hover svg { translate: 4px 0; color: var(--encre); } }
 
-.pochettes { list-style: none; display: flex; gap: 10px; margin: 0 -24px 20px; padding: 0 24px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding: 0 24px; scrollbar-width: none; }
+/* La musique : le dernier projet en grand, son disque sort de la pochette quand elle arrive à l'écran. Le disque reprend les sillons de la lune. */
+.galette { position: relative; display: block; padding-right: 30%; view-timeline: --galette block; }
+.galette img { position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: var(--filet); box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .55); }
+.disque { position: absolute; top: 4%; right: 0; height: 92%; aspect-ratio: 1; overflow: hidden; border-radius: 50%; transition: translate .75s cubic-bezier(.16, 1, .3, 1);
+  background: radial-gradient(circle, var(--encre) 0 3%, var(--fond) 3.6% 16%, transparent 16.6%), repeating-radial-gradient(circle, transparent 0 3px, color-mix(in srgb, var(--fond) 10%, transparent) 3px 4px), var(--encre); }
+.disque::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 20deg, transparent 0 8%, color-mix(in srgb, var(--fond) 20%, transparent) 14%, transparent 21% 58%, color-mix(in srgb, var(--fond) 20%, transparent) 64%, transparent 71%); -webkit-mask: radial-gradient(circle, transparent 17%, #000 17.5%); mask: radial-gradient(circle, transparent 17%, #000 17.5%); }
+@keyframes sort { from { transform: translateX(-44%) rotate(-140deg); } to { transform: none; } }
+@supports (animation-timeline: view()) { .disque { animation: sort linear both; animation-timeline: --galette; animation-range: entry 30% cover 55%; } }
+@media (hover: hover) { .galette:hover .disque { translate: 6% 0; } }
+.sur { margin: 24px 0 6px; font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--doux); }
+h3 { margin: 0; font-size: 28px; font-weight: 600; line-height: 1.1; letter-spacing: -.015em; }
+.ecoute { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 20px 0 0; padding: 0; }
+.ecoute a { display: flex; align-items: center; justify-content: space-between; min-height: 52px; padding: 0 16px; font-size: 15px; font-weight: 500; border: 1px solid var(--filet); transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.ecoute svg { width: 16px; height: 16px; color: var(--doux); transition: color .2s ease, translate .2s ease; }
+@media (hover: hover) { .ecoute a:hover { background: var(--encre); border-color: var(--encre); color: var(--fond); } .ecoute a:hover svg { color: inherit; translate: 3px 0; } }
+.ecoute a:active { opacity: .7; }
+.pochettes { list-style: none; display: flex; gap: 12px; margin: 40px -24px 12px; padding: 0 24px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding: 0 24px; scrollbar-width: none; }
 .pochettes::-webkit-scrollbar { display: none; }
-.pochettes li { flex: 0 0 31%; scroll-snap-align: start; }
+.pochettes li { flex: 0 0 38%; min-width: 0; scroll-snap-align: start; }
 .pochettes a { display: block; }
-.pochettes img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: var(--filet); transition: opacity .2s ease; }
-@media (hover: hover) { .pochettes a:hover img { opacity: .8; } }
+.pochettes img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: var(--filet); transition: scale .5s cubic-bezier(.16, 1, .3, 1); }
+.pochettes span { display: block; margin-top: 10px; font-size: 13px; line-height: 1.3; color: var(--doux); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .2s ease; }
+@media (hover: hover) { .pochettes a:hover img { scale: 1.03; } .pochettes a:hover span { color: var(--encre); } }
 
 footer { padding: 56px 0 72px; text-align: center; font-size: 14px; color: var(--doux); }
 section + section { margin-top: 56px; }
 footer .lieu { margin: 0 0 18px; letter-spacing: .14em; text-indent: .14em; white-space: nowrap; }
 footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-bottom: 2px; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .lune, .lune::after, h1 span, .villes div, .tuiles a::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .lune, .lune::after, h1 span, .villes div, .tuiles a::before, .disque { animation: none; } }
 </style>
 </head>
 <body>
@@ -129,21 +146,31 @@ footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-b
 
   <section aria-labelledby="t-musique">
     <h2 id="t-musique">La musique</h2>
+    <div class="une">
+      <a class="galette" href="merwane/catharsis-vol-2/" aria-label="Catharsis, vol. 2"><i class="disque" aria-hidden="true"></i><img src="photos/covers/catharsis-vol-2.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"></a>
+      <p class="sur">Dernier projet</p>
+      <h3>Catharsis, vol. 2</h3>
+      <ul class="ecoute">
+        <li><a href="https://open.spotify.com/album/35gNu1kacZPFhM50szedM1">Spotify<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+        <li><a href="https://music.apple.com/fr/album/catharsis-vol-2/6809210709">Apple Music<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+        <li><a href="https://kloud-music.fr/library/albums/album_a021d0e0bd93">Kloud<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+        <li><a href="https://www.youtube.com/channel/UC0PBdlaosX3D3BSyb91ibqQ/videos">YouTube<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+      </ul>
+    </div>
     <ul class="pochettes">
-      <li><a href="merwane/les-epines/"><img src="photos/covers/les-epines.jpg" alt="Les Épines" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/catharsis-vol-2/"><img src="photos/covers/catharsis-vol-2.jpg" alt="Catharsis, vol. 2" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/enfant-de-marseille/"><img src="photos/covers/enfant-de-marseille.jpg" alt="Enfant de Marseille" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/il-faut/"><img src="photos/covers/il-faut.jpg" alt="Il faut" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/casse-croute/"><img src="photos/covers/casse-croute.jpg" alt="Casse-croûte" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/dis-moi-si-tu-maimais/"><img src="photos/covers/dis-moi-si-tu-m-aimais.jpg" alt="Dis moi si tu m&#x27;aimais" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/reve-de-garce/"><img src="photos/covers/reve-de-garce.jpg" alt="Rêve de garce" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/freestyle-elevate-x/"><img src="photos/covers/freestyle-elevate-x.jpg" alt="Freestyle Elevate X" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/calitrash/"><img src="photos/covers/calitrash.jpg" alt="Calitrash" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/catharsis/"><img src="photos/covers/catharsis-ep.jpg" alt="Catharsis (EP)" width="360" height="360" loading="lazy" decoding="async"></a></li>
-      <li><a href="merwane/extended-play-1/"><img src="photos/covers/extended-play-1-ep.jpg" alt="Extended Play 1 (EP)" width="360" height="360" loading="lazy" decoding="async"></a></li>
+      <li><a href="merwane/les-epines/"><img src="photos/covers/les-epines.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Les Épines</span></a></li>
+      <li><a href="merwane/enfant-de-marseille/"><img src="photos/covers/enfant-de-marseille.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Enfant de Marseille</span></a></li>
+      <li><a href="merwane/il-faut/"><img src="photos/covers/il-faut.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Il faut</span></a></li>
+      <li><a href="merwane/casse-croute/"><img src="photos/covers/casse-croute.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Casse-croûte</span></a></li>
+      <li><a href="merwane/dis-moi-si-tu-maimais/"><img src="photos/covers/dis-moi-si-tu-m-aimais.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Dis moi si tu m&#x27;aimais</span></a></li>
+      <li><a href="merwane/reve-de-garce/"><img src="photos/covers/reve-de-garce.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Rêve de garce</span></a></li>
+      <li><a href="merwane/freestyle-elevate-x/"><img src="photos/covers/freestyle-elevate-x.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Freestyle Elevate X</span></a></li>
+      <li><a href="merwane/calitrash/"><img src="photos/covers/calitrash.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Calitrash</span></a></li>
+      <li><a href="merwane/catharsis/"><img src="photos/covers/catharsis-ep.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Catharsis (EP)</span></a></li>
+      <li><a href="merwane/extended-play-1/"><img src="photos/covers/extended-play-1-ep.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><span>Extended Play 1 (EP)</span></a></li>
     </ul>
     <ul class="projets">
-      <li><a href="merwane/"><div><b>Écouter Merwane</b><span>Tous les titres, toutes les plateformes</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+      <li><a href="merwane/"><div><b>Toute la discographie</b><span>Onze sorties, toutes les plateformes</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
     </ul>
   </section>
 
