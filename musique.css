@@ -104,6 +104,9 @@ section > .titre { margin-top: 0; }
 .sorties span, .bande span { display: block; font-size: 13px; color: var(--doux); }
 @media (hover: hover) { .bande a:hover img { scale: 1.03; } }
 
+.tout { margin: 10px 0 22px; font-size: 14px; color: var(--doux); }
+.tout a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-bottom: 2px; }
+
 footer { margin-top: 72px; padding: 32px 0 72px; border-top: 1px solid var(--filet); text-align: center; font-size: 14px; line-height: 2.2; color: var(--doux); }
 footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-bottom: 2px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .disque { animation: none; } }
