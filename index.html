@@ -16,22 +16,25 @@
 @media (prefers-color-scheme: dark) { :root { --fond: #0b0c0e; --encre: #f4f2ec; --doux: #9a9ba1; --filet: #2a2c31; } }
 * { box-sizing: border-box; margin: 0; }
 html { -webkit-text-size-adjust: 100%; }
-body { background: var(--fond); color: var(--encre); font: 400 16px/1.5 Archivo, "Helvetica Neue", Arial, sans-serif; }
+body { overflow-x: clip; background: var(--fond); color: var(--encre); font: 400 16px/1.5 Archivo, "Helvetica Neue", Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 a:focus-visible { outline: 2px solid var(--encre); outline-offset: 4px; }
 main { max-width: 460px; margin: 0 auto; padding: 0 24px; }
 
+/* Un grain de papier très léger sur toute la page. */
+body::after { content: ""; position: fixed; inset: 0; z-index: 5; pointer-events: none; opacity: .07; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E"); }
+
 ::selection { background: var(--encre); color: var(--fond); }
 
 /* En-tête : le recto de la carte « Lune ». Le disque entre par la droite, le nom s'inverse en le traversant. */
-.tete { position: relative; isolation: isolate; height: 64svh; min-height: 340px; overflow: hidden; display: grid; place-items: center; background: var(--fond); }
+.tete { position: relative; isolation: isolate; height: 76svh; min-height: 380px; overflow: hidden; display: grid; place-items: center; background: var(--fond); }
 .lune { position: absolute; left: 53vw; top: 50%; width: 84vw; aspect-ratio: 1; border-radius: 50%; background: var(--encre); translate: 0 -50%; animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both; }
 @keyframes lever { from { translate: 60vw -50%; } }
 @keyframes passe { to { transform: translateX(-35%); } }
 @supports (animation-timeline: scroll()) {
-  .lune { animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both, passe linear both; animation-timeline: auto, scroll(root); animation-range: normal, 0 64svh; }
+  .lune { animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both, passe linear both; animation-timeline: auto, scroll(root); animation-range: normal, 0 76svh; }
 }
-h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: 22px; font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: .36em; text-indent: .36em; line-height: 1; }
+h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: clamp(22px, 6.4vw, 30px); font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: .36em; text-indent: .36em; line-height: 1; }
 .lieu { margin-top: 14px; font-size: 12px; letter-spacing: .22em; text-indent: .22em; text-transform: uppercase; color: var(--doux); }
 .actions { margin: 32px 0 56px; display: grid; gap: 12px; }
 .bouton { display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 20px; font-size: 16px; font-weight: 500; border: 1px solid var(--encre); transition: background-color .2s ease, color .2s ease; }
@@ -45,15 +48,30 @@ h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: 22p
 h2 { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--doux); text-align: center; padding-bottom: 20px; }
 .projets { list-style: none; padding: 0; border-top: 1px solid var(--filet); }
 .projets a { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--filet); }
-/* Les projets : une tuile par marque, le logo au-dessus, le nom en dessous. Les logos sont des masques, ils prennent la couleur de l'encre. */
+/* Les projets : une tuile par marque. Au survol, un disque d'encre s'ouvre sous le pointeur et la tuile s'inverse, comme le nom dans la lune.
+   Le contenu est en « difference » : il reste lisible sur le papier comme sur l'encre. */
 .tuiles { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .tuiles li:first-child { grid-column: 1 / -1; }
-.tuiles a { display: flex; flex-direction: column; align-items: center; height: 100%; padding: 32px 14px 26px; text-align: center; border: 1px solid var(--filet); transition: border-color .2s ease; }
-.tuiles a:active { opacity: .7; }
-@media (hover: hover) { .tuiles a:hover { border-color: var(--encre); } }
-.marque { display: block; width: 100%; height: 60px; margin-bottom: 22px; background: var(--encre); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
-.tuiles b { font-size: 17px; font-weight: 600; }
-.tuiles span { margin-top: 4px; font-size: 13px; line-height: 1.4; color: var(--doux); text-wrap: balance; }
+.tuiles a { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: center; height: 100%; padding: 34px 14px 28px; text-align: center; background: var(--fond); border: 1px solid var(--filet); view-timeline: --tuile block; transition: border-color .3s ease; }
+.tuiles a::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--encre); clip-path: circle(0 at var(--x, 50%) var(--y, 36%)); transition: clip-path .75s cubic-bezier(.16, 1, .3, 1); }
+.tuiles a:hover, .tuiles a:focus-visible { border-color: var(--encre); }
+.tuiles a:hover::before, .tuiles a:focus-visible::before, .tuiles a:active::before { clip-path: circle(150% at var(--x, 50%) var(--y, 36%)); }
+.marque { display: block; width: 100%; height: 64px; margin-bottom: 24px; background: #fff; mix-blend-mode: difference; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; transition: scale .75s cubic-bezier(.16, 1, .3, 1); }
+.tuiles a:hover .marque { scale: 1.08; }
+.tuiles b { font-size: 17px; font-weight: 600; color: #fff; mix-blend-mode: difference; }
+.tuiles span { margin-top: 4px; font-size: 13px; line-height: 1.4; color: #8f8f8f; mix-blend-mode: difference; text-wrap: balance; }
+/* Au doigt, pas de survol : chaque tuile s'allume en passant au milieu de l'écran. */
+@keyframes allume { 0%, 100% { clip-path: circle(0 at 50% 36%); } 35%, 65% { clip-path: circle(150% at 50% 36%); } }
+@media (hover: none) { @supports (animation-timeline: view()) {
+  .tuiles a::before { animation: allume linear both; animation-timeline: --tuile; animation-range: cover 22% cover 78%; }
+} }
+
+/* Les villes défilent, séparées par le point de la carte. */
+.villes { margin: 64px calc(50% - 50vw) 0; padding: 22px 0; overflow: hidden; border-block: 1px solid var(--filet); }
+.villes div { display: flex; width: max-content; animation: defile 36s linear infinite; }
+.villes span { display: flex; align-items: center; font-size: clamp(26px, 8vw, 40px); font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: .14em; line-height: 1; white-space: nowrap; }
+.villes span::after { content: ""; width: .28em; height: .28em; margin: 0 .9em; border-radius: 50%; background: currentColor; }
+@keyframes defile { to { transform: translateX(-50%); } }
 .projets b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -.005em; }
 .projets span { display: block; margin-top: 2px; font-size: 14px; color: var(--doux); }
 .projets svg { width: 18px; height: 18px; color: var(--doux); transition: translate .2s ease, color .2s ease; }
@@ -70,7 +88,7 @@ footer { padding: 56px 0 72px; text-align: center; font-size: 14px; color: var(-
 section + section { margin-top: 56px; }
 footer .lieu { margin: 0 0 18px; letter-spacing: .14em; text-indent: .14em; white-space: nowrap; }
 footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-bottom: 2px; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .lune { animation: none; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .lune, .villes div, .tuiles a::before { animation: none; } }
 </style>
 </head>
 <body>
@@ -115,10 +133,21 @@ footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-b
     </ul>
   </section>
 
+  <div class="villes" role="img" aria-label="Marseille, Marrakech, Barcelone"><div aria-hidden="true"><span>Marseille</span><span>Marrakech</span><span>Barcelone</span><span>Marseille</span><span>Marrakech</span><span>Barcelone</span><span>Marseille</span><span>Marrakech</span><span>Barcelone</span><span>Marseille</span><span>Marrakech</span><span>Barcelone</span></div></div>
+
   <footer>
-    <p class="lieu">Marseille · Marrakech · Barcelone</p>
     <a href="mailto:merwane.snk@gmail.com">merwane.snk@gmail.com</a>
   </footer>
 </main>
+<script>
+/* Le disque d'encre part de l'endroit où le pointeur entre dans la tuile. */
+document.querySelectorAll(".tuiles a").forEach(function (a) {
+  a.addEventListener("pointerenter", function (e) {
+    var r = a.getBoundingClientRect();
+    a.style.setProperty("--x", e.clientX - r.left + "px");
+    a.style.setProperty("--y", e.clientY - r.top + "px");
+  });
+});
+</script>
 </body>
 </html>
