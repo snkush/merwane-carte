@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page introuvable · Merwane</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
+<style>
+/* Page d'erreur : le recto de la carte, sans rien d'autre. */
+@font-face { font-family: Archivo; src: url(/fonts/archivo.woff2) format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+:root { --fond: #f4f2ec; --encre: #0b0c0e; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --fond: #0b0c0e; --encre: #f4f2ec; } }
+* { box-sizing: border-box; margin: 0; }
+body { min-height: 100svh; display: grid; place-items: center; padding: 24px; overflow: hidden; position: relative; background: var(--fond); color: var(--encre); font: 400 16px/1.5 Archivo, "Helvetica Neue", Arial, sans-serif; text-align: center; }
+/* Le même disque que sur l'accueil : son bord passe au milieu du nom. */
+body { --r: max(61vw, 64svh, 340px); }
+body::before { content: ""; position: absolute; left: calc(50% - .029 * var(--r)); top: calc(50% - .76 * var(--r) - 40px); width: calc(2 * var(--r)); aspect-ratio: 1; border-radius: 50%; background: var(--encre); z-index: -1; }
+main { mix-blend-mode: difference; color: #f4f2ec; }
+h1 { font-weight: 500; font-stretch: 125%; text-transform: uppercase; font-size: clamp(18px, 5vw, 30px); letter-spacing: .44em; text-indent: .44em; line-height: 1; }
+p { margin-top: 20px; }
+a { display: inline-block; margin-top: 28px; padding: 14px 22px; border: 1px solid currentColor; color: inherit; text-decoration: none; font-weight: 500; letter-spacing: .04em; }
+a:hover { background: #f4f2ec; color: #0b0c0e; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Merwane</h1>
+<p>Cette page n'existe pas, ou plus.</p>
+<a href="/">Revenir à l'accueil</a>
+</main>
+</body>
+</html>
