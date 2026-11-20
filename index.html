@@ -100,8 +100,8 @@ h2 { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: u
 @keyframes sort { from { transform: translateX(-44%) rotate(-140deg); } to { transform: none; } }
 @supports (animation-timeline: view()) { .disque { animation: sort linear both; animation-timeline: --galette; animation-range: entry 30% cover 55%; } }
 @media (hover: hover) { .galette:hover .disque { translate: 6% 0; } }
-.sur { margin: 24px 0 6px; font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--doux); }
-h3 { margin: 0; font-size: 28px; font-weight: 600; line-height: 1.1; letter-spacing: -.015em; }
+.sur { margin: 4px 0 0; font-size: 15px; color: var(--doux); }
+h3 { margin: 24px 0 0; font-size: 28px; font-weight: 600; line-height: 1.1; letter-spacing: -.015em; }
 .ecoute { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 20px 0 0; padding: 0; }
 .ecoute a { display: flex; align-items: center; justify-content: space-between; min-height: 52px; padding: 0 16px; font-size: 15px; font-weight: 500; border: 1px solid var(--filet); transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
 .ecoute svg { width: 16px; height: 16px; color: var(--doux); transition: color .2s ease, translate .2s ease; }
@@ -148,8 +148,8 @@ footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-b
     <h2 id="t-musique">La musique</h2>
     <div class="une">
       <a class="galette" href="merwane/catharsis-vol-2/" aria-label="Catharsis, vol. 2"><i class="disque" aria-hidden="true"></i><img src="photos/covers/catharsis-vol-2.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"></a>
-      <p class="sur">Dernier projet</p>
       <h3>Catharsis, vol. 2</h3>
+      <p class="sur">Le dernier projet</p>
       <ul class="ecoute">
         <li><a href="https://open.spotify.com/album/35gNu1kacZPFhM50szedM1">Spotify<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
         <li><a href="https://music.apple.com/fr/album/catharsis-vol-2/6809210709">Apple Music<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
