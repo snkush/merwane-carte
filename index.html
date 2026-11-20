@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Merwane</title>
-<meta name="description" content="Merwane, Marseille. SNK Records, 444, Kloud, Doggo, Elevate X.">
+<meta name="description" content="Merwane, Marseille. SNK Records, 444, Kloud, Elevate X.">
 <meta name="robots" content="noindex">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Merwane">
-<meta property="og:description" content="Marseille · Marrakech · Barcelone. SNK Records, 444, Kloud, Doggo, Elevate X.">
+<meta property="og:description" content="Marseille · Marrakech · Barcelone. SNK Records, 444, Kloud, Elevate X.">
 <meta property="og:url" content="https://merwane.snk-records.com/">
 <meta property="og:image" content="https://merwane.snk-records.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -94,7 +94,7 @@ h2::before, h2::after { content: ""; flex: 1; height: 1px; background: var(--fil
 /* Les projets : une tuile par marque. Au survol, un disque d'encre s'ouvre sous le pointeur et la tuile s'inverse, comme le nom dans la lune.
    Le contenu est en « difference » : il reste lisible sur le papier comme sur l'encre. */
 .tuiles { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.tuiles li:first-child { grid-column: 1 / -1; }
+.tuiles li:first-child, .tuiles li:last-child:nth-child(even) { grid-column: 1 / -1; }
 .tuiles a { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: center; height: 100%; padding: 34px 14px 28px; text-align: center; background: var(--fond); border: 1px solid var(--filet); view-timeline: --tuile block; transition: border-color .3s ease; }
 .tuiles a::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--encre); clip-path: circle(0 at var(--x, 50%) var(--y, 36%)); transition: clip-path .75s cubic-bezier(.16, 1, .3, 1); }
 .tuiles a:hover, .tuiles a:focus-visible { border-color: var(--encre); }
@@ -201,8 +201,7 @@ section + section { margin-top: 72px; }
       <li><a href="https://snk-records.com"><i class="marque" style="--m:url(logos/snk.svg)" aria-hidden="true"></i><b>SNK Records</b><span>Label indépendant et studio</span></a></li>
       <li><a href="https://444maison.com"><i class="marque" style="--m:url(logos/444.svg)" aria-hidden="true"></i><b>444</b><span>Streetwear premium</span></a></li>
       <li><a href="https://kloud-music.fr"><i class="marque" style="--m:url(logos/kloud.svg)" aria-hidden="true"></i><b>Kloud</b><span>La musique qu'on achète pour la garder</span></a></li>
-      <li><a href="mailto:merwane.snk@gmail.com?subject=Doggo"><i class="marque" style="--m:url(logos/doggo.svg)" aria-hidden="true"></i><b>Doggo</b><span>L'application de la vie du chien, en préparation</span></a></li>
-      <li><a href="mailto:merwane.snk@gmail.com?subject=Elevate%20X"><i class="marque" style="--m:url(logos/elevate-x.svg)" aria-hidden="true"></i><b>Elevate X</b><span>Association pour les artistes émergents</span></a></li>
+      <li><a href="mailto:merwane.snk@gmail.com?subject=Elevate%20X"><i class="marque" style="--m:url(logos/elevate-x.svg)" aria-hidden="true"></i><b>Elevate X</b><span>Association pour les artistes émergents, en préparation</span></a></li>
     </ul>
   </section>
 
