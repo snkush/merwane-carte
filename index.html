@@ -41,17 +41,19 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 5; pointer-events
 .tete { --lueur: rgba(255, 222, 180, .2); --sillon: rgba(255, 255, 255, .04); --reflet: rgba(255, 220, 175, .15); --halo: rgba(11, 12, 14, .24); }
 @media (prefers-color-scheme: dark) { .tete { --lueur: #fff; --sillon: rgba(11, 12, 14, .05); --reflet: rgba(110, 80, 30, .16); --halo: rgba(244, 242, 236, .16); } }
 /* Le disque a du volume : une lueur qui suit le pointeur, des sillons à peine visibles, un reflet chaud qui tourne lentement. */
-.lune { position: absolute; left: 50vw; top: 50%; width: 84vw; aspect-ratio: 1; overflow: hidden; border-radius: 50%; background: radial-gradient(circle at var(--sx, 26%) var(--sy, 30%), var(--lueur), transparent 46%), var(--encre); box-shadow: 0 0 140px var(--halo); translate: 0 -50%; animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both; }
+/* Comme sur la carte : un très grand disque dont on ne voit qu'un arc. Son centre est plus bas que le nom (0,24 r) et son bord passe dans le blanc entre le R et le W (0,87 em à gauche du milieu du nom). */
+.tete { --fs: clamp(22px, 6.4vw, 46px); --r: max(61vw, 64svh, 340px); }
+.lune { position: absolute; left: calc(50% - .87 * var(--fs) - .0292 * var(--r)); top: calc(50% + .24 * var(--r)); width: calc(2 * var(--r)); aspect-ratio: 1; overflow: hidden; border-radius: 50%; background: radial-gradient(circle at var(--sx, 26%) var(--sy, 30%), var(--lueur), transparent 46%), var(--encre); box-shadow: 0 0 140px var(--halo); translate: 0 -50%; animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both; }
 .lune::before, .lune::after { content: ""; position: absolute; inset: 0; border-radius: 50%; }
 .lune::before { background: repeating-radial-gradient(circle, transparent 0 6px, var(--sillon) 6px 7px); }
 .lune::after { background: conic-gradient(transparent 0 6%, var(--reflet) 13%, transparent 21% 52%, var(--reflet) 59%, transparent 67%); animation: tourne 28s linear infinite; }
 @keyframes tourne { to { rotate: 1turn; } }
 @keyframes lever { from { translate: 60vw -50%; } }
-@keyframes passe { to { transform: translateX(-35%); } }
+@keyframes passe { to { transform: translateX(-10%); } }
 @supports (animation-timeline: scroll()) {
   .lune { animation: lever 1.5s cubic-bezier(.16, 1, .3, 1) both, passe linear both; animation-timeline: auto, scroll(root); animation-range: normal, 0 68svh; }
 }
-h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: clamp(22px, 6.4vw, 46px); white-space: nowrap; font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: .36em; text-indent: .36em; line-height: 1; }
+h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: var(--fs); white-space: nowrap; font-weight: 500; font-stretch: 125%; text-transform: uppercase; letter-spacing: .36em; text-indent: .36em; line-height: 1; }
 /* Le nom arrive lettre par lettre. */
 h1 span { display: inline-block; animation: monte 1s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--i) * 70ms + .3s); }
 @keyframes monte { from { opacity: 0; translate: 0 .7em; filter: blur(8px); } }
