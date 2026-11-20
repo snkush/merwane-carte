@@ -46,6 +46,21 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 5; pointer-events
   .liens .plein:hover span { color: var(--doux); }
 }
 .liens a:active { opacity: .7; }
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+/* L'exclu : le bouton principal. Une lueur le traverse de temps en temps et la flèche avance d'un cran. */
+.exclu a { position: relative; overflow: hidden; min-height: 80px; background: var(--encre); border-color: var(--encre); color: var(--fond); }
+.exclu a::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 38%; pointer-events: none; background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--fond) 24%, transparent), transparent); transform: translateX(-130%); animation: lueur 5.5s cubic-bezier(.4, 0, .2, 1) 1.4s infinite; }
+.exclu em { display: inline-block; margin-bottom: 6px; padding: 2px 7px 1px; border: 1px solid color-mix(in srgb, var(--fond) 45%, transparent); font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.exclu b { display: block; font-size: 19px; font-weight: 600; letter-spacing: -.005em; }
+.exclu span { display: block; font-size: 13px; color: color-mix(in srgb, var(--fond) 66%, var(--encre)); }
+.exclu svg { color: inherit; animation: pousse 5.5s cubic-bezier(.4, 0, .2, 1) 1.4s infinite; }
+@keyframes lueur { 0% { transform: translateX(-130%); } 24%, 100% { transform: translateX(330%); } }
+@keyframes pousse { 0%, 10%, 30%, 100% { transform: none; } 20% { transform: translateX(6px); } }
+.exclu a:active { opacity: 1; transform: scale(.985); }
+.aussi { display: flex; align-items: center; gap: 12px; margin: 14px 0 4px; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--doux); }
+.aussi::before, .aussi::after { content: ""; flex: 1; height: 1px; background: var(--filet); }
+@media (prefers-reduced-motion: reduce) { .exclu a::after { display: none; } .exclu svg { animation: none; } }
+
 
 section { margin-top: 64px; }
 h2:not(.titre) { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--doux); text-align: center; padding-bottom: 20px; }

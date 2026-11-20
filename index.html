@@ -130,6 +130,28 @@ h3 { margin: 24px 0 0; font-size: 28px; font-weight: 600; line-height: 1.1; lett
 .ecoute svg { width: 16px; height: 16px; color: var(--doux); transition: color .2s ease, translate .2s ease; }
 @media (hover: hover) { .ecoute a:hover { background: var(--encre); border-color: var(--encre); color: var(--fond); } .ecoute a:hover svg { color: inherit; translate: 3px 0; } }
 .ecoute a:active { opacity: .7; }
+/* L'exclu : le bouton principal. Une lueur le traverse de temps en temps et la flèche avance d'un cran. */
+.ecoute .exclu, .ecoute .aussi { grid-column: 1 / -1; }
+.ecoute .exclu a { position: relative; overflow: hidden; min-height: 80px; padding: 12px 18px; background: var(--encre); border-color: var(--encre); color: var(--fond); }
+.ecoute .exclu a::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 38%; pointer-events: none; background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--fond) 24%, transparent), transparent); transform: translateX(-130%); animation: lueur 5.5s cubic-bezier(.4, 0, .2, 1) 1.4s infinite; }
+.exclu em { display: inline-block; margin-bottom: 6px; padding: 2px 7px 1px; border: 1px solid color-mix(in srgb, var(--fond) 45%, transparent); font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.exclu b { display: block; font-size: 19px; font-weight: 600; letter-spacing: -.005em; }
+.exclu span { display: block; font-size: 13px; color: color-mix(in srgb, var(--fond) 66%, var(--encre)); }
+.ecoute .exclu svg { width: 18px; height: 18px; color: inherit; animation: pousse 5.5s cubic-bezier(.4, 0, .2, 1) 1.4s infinite; }
+@keyframes lueur { 0% { transform: translateX(-130%); } 24%, 100% { transform: translateX(330%); } }
+@keyframes pousse { 0%, 10%, 30%, 100% { transform: none; } 20% { transform: translateX(6px); } }
+.ecoute .exclu a:active { opacity: 1; transform: scale(.985); }
+.aussi { display: flex; align-items: center; gap: 12px; margin: 14px 0 4px; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--doux); }
+.aussi::before, .aussi::after { content: ""; flex: 1; height: 1px; background: var(--filet); }
+@media (prefers-reduced-motion: reduce) { .ecoute .exclu a::after { display: none; } .ecoute .exclu svg { width: 18px; height: 18px; animation: none; } }
+/* Téléphone : pas de flou animé (coûteux), pas de voile au toucher. */
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+@media (hover: none) { @keyframes monte { from { opacity: 0; translate: 0 .7em; } } }
+.pochettes { overscroll-behavior-x: contain; }
+/* Navigateurs sans animation liée au défilement : les blocs montent une fois, à leur entrée dans l'écran. */
+.io :is(main h2, .tuiles li, .une, .pochettes, main .projets) { opacity: 0; translate: 0 28px; transition: opacity .7s cubic-bezier(.16, 1, .3, 1), translate .7s cubic-bezier(.16, 1, .3, 1); }
+.io :is(main h2, .tuiles li, .une, .pochettes, main .projets).la { opacity: 1; translate: none; }
+
 .pochettes { list-style: none; display: flex; gap: 12px; margin: 40px -24px 12px; padding: 0 24px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding: 0 24px; scrollbar-width: none; }
 .pochettes::-webkit-scrollbar { display: none; }
 .pochettes li { flex: 0 0 38%; min-width: 0; scroll-snap-align: start; }
@@ -191,10 +213,12 @@ section + section { margin-top: 72px; }
       <h3>Catharsis, vol. 2</h3>
       <p class="sur">Le dernier projet</p>
       <ul class="ecoute">
-        <li><a href="https://open.spotify.com/album/35gNu1kacZPFhM50szedM1">Spotify<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-        <li><a href="https://music.apple.com/fr/album/catharsis-vol-2/6809210709">Apple Music<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-        <li><a href="https://kloud-music.fr/library/albums/album_a021d0e0bd93">Kloud<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+        <li class="exclu"><a href="https://kloud-music.fr/library/albums/album_a021d0e0bd93"><div><em>Exclu</em><b>Kloud</b><span>L'album et 5 bonus cachés, offerts</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+        <li class="aussi" aria-hidden="true">Aussi sur</li>
+        <li><a data-p="spotify" href="https://open.spotify.com/album/35gNu1kacZPFhM50szedM1">Spotify<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+        <li><a data-p="apple" href="https://music.apple.com/fr/album/catharsis-vol-2/6809210709">Apple Music<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
         <li><a href="https://www.youtube.com/channel/UC0PBdlaosX3D3BSyb91ibqQ/videos">YouTube<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+        <li><a href="https://distrokid.com/hyperfollow/merwane/catharsis-vol-2-2">Les autres<svg aria-hidden="true"><use href="#fl"/></svg></a></li>
       </ul>
     </div>
     <ul class="pochettes">
@@ -255,6 +279,14 @@ function regle() { var vue = passe && !fin; barre.classList.toggle("vue", vue); 
 if ("IntersectionObserver" in window) {
   new IntersectionObserver(function (e) { passe = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; regle(); }).observe(document.querySelector(".actions .plein"));
   new IntersectionObserver(function (e) { fin = e[0].isIntersecting; regle(); }, { threshold: .25 }).observe(document.querySelector(".fin"));
+}
+/* Sur iPhone, iPad et Mac, Apple Music passe devant Spotify. */
+(function () { var s = document.querySelector(".ecoute [data-p=spotify]"), a = document.querySelector(".ecoute [data-p=apple]"); if (s && a && /iPhone|iPad|Macintosh/.test(navigator.userAgent)) s.parentNode.before(a.parentNode); })();
+/* Repli pour les navigateurs sans animation liée au défilement. */
+if (!(window.CSS && CSS.supports("animation-timeline: view()")) && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.classList.add("io");
+  var vu = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("la"); vu.unobserve(x.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll("main h2, .tuiles li, .une, .pochettes, main .projets").forEach(function (el) { vu.observe(el); });
 }
 /* La pochette cliquée porte le nom que la page de la sortie donne à la sienne : le navigateur fait le trajet. */
 document.querySelectorAll(".galette, .pochettes a").forEach(function (a) {

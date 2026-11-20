@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Freestyle Elevate X · Merwane</title>
-<meta name="description" content="Freestyle Elevate X, freestyle de Merwane. Écouter sur toutes les plateformes.">
+<meta name="description" content="Freestyle Elevate X, projet de Merwane. Écouter sur toutes les plateformes.">
 <link rel="canonical" href="https://merwane.snk-records.com/merwane/freestyle-elevate-x/">
 <meta property="og:title" content="Freestyle Elevate X · Merwane">
-<meta property="og:description" content="Freestyle Elevate X, freestyle de Merwane. Écouter sur toutes les plateformes.">
+<meta property="og:description" content="Freestyle Elevate X, projet de Merwane. Écouter sur toutes les plateformes.">
 <meta property="og:type" content="music.album">
 <meta property="og:url" content="https://merwane.snk-records.com/merwane/freestyle-elevate-x/">
 <meta property="og:image" content="https://merwane.snk-records.com/photos/covers/freestyle-elevate-x.jpg">
@@ -24,7 +24,7 @@
   <article>
     <div class="galette"><i class="disque" aria-hidden="true"></i><img src="/photos/covers/freestyle-elevate-x.jpg" alt="" width="360" height="360" fetchpriority="high" decoding="async"></div>
     <h1 class="titre">Freestyle Elevate X</h1>
-    <p class="fiche">Merwane · Freestyle</p>
+    <p class="fiche">Merwane · Projet</p>
     <ul class="liens" id="ecouter">
       <li><a class="plein" data-p="apple" href="https://music.apple.com/fr/album/freestyle-elevate-x/1805480034"><div><b>Apple Music</b></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
       <li><a href="https://open.spotify.com/artist/5RMEcGdJoju07ec83humPY"><div><b>Spotify</b><span>Toute la musique de Merwane</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
@@ -40,7 +40,7 @@
       <li><a href="/merwane/casse-croute/"><img src="/photos/covers/casse-croute.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Casse-croûte</b><span>Freestyle</span></a></li>
       <li><a href="/merwane/dis-moi-si-tu-maimais/"><img src="/photos/covers/dis-moi-si-tu-m-aimais.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Dis moi si tu m&#x27;aimais</b><span>Single · avec Axèle</span></a></li>
       <li><a href="/merwane/reve-de-garce/"><img src="/photos/covers/reve-de-garce.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Rêve de garce</b><span>Single · avec Achille</span></a></li>
-      <li><a href="/merwane/calitrash/"><img src="/photos/covers/calitrash.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Calitrash</b><span>Single</span></a></li>
+      <li><a href="/merwane/calitrash/"><img src="/photos/covers/calitrash.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Calitrash</b><span>Projet</span></a></li>
       <li><a href="/merwane/catharsis/"><img src="/photos/covers/catharsis-ep.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Catharsis (EP)</b><span>EP</span></a></li>
       <li><a href="/merwane/extended-play-1/"><img src="/photos/covers/extended-play-1-ep.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Extended Play 1 (EP)</b><span>EP</span></a></li>
       <li><a href="/merwane/toujours-la-meme/"><img src="/photos/covers/toujours-la-meme.jpg" alt="" width="360" height="360" loading="lazy" decoding="async"><b>Toujours la même</b><span>Single</span></a></li>
@@ -55,6 +55,6 @@
   </footer>
 </main>
 <script>(function(){var t=document.querySelector('.tri');if(!t)return;t.hidden=false;t.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var g=b.dataset.g;function f(){t.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.sorties li').forEach(function(li){li.hidden=!!g&&li.dataset.g!==g})}if(document.startViewTransition&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.startViewTransition(f);else f()})})();</script>
-<script>(function(){var l=document.querySelector('.liens');if(!l||!/iPhone|iPad|Macintosh/.test(navigator.userAgent))return;var s=l.querySelector('[data-p=spotify].plein'),a=l.querySelector('[data-p=apple]');if(s&&a){s.classList.remove('plein');a.classList.add('plein');l.prepend(a.parentNode);}})();</script>
+<script>(function(){var l=document.querySelector('.liens');if(!l||!/iPhone|iPad|Macintosh/.test(navigator.userAgent))return;var s=l.querySelector('[data-p=spotify]'),a=l.querySelector('[data-p=apple]');if(s&&a&&(s.compareDocumentPosition(a)&4)){if(s.classList.contains('plein')){s.classList.remove('plein');a.classList.add('plein');}s.parentNode.before(a.parentNode);}})();</script>
 </body>
 </html>
