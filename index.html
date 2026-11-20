@@ -45,6 +45,9 @@ h1 { position: relative; color: #fff; mix-blend-mode: difference; font-size: 22p
 h2 { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--doux); text-align: center; padding-bottom: 20px; }
 .projets { list-style: none; padding: 0; border-top: 1px solid var(--filet); }
 .projets a { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--filet); }
+.projets a:has(.marque) { grid-template-columns: 52px 1fr auto; }
+/* Les logos sont des masques : ils prennent la couleur de l'encre, en clair comme en sombre. */
+.marque { width: 52px; height: 44px; background: var(--encre); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
 .projets b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -.005em; }
 .projets span { display: block; margin-top: 2px; font-size: 14px; color: var(--doux); }
 .projets svg { width: 18px; height: 18px; color: var(--doux); transition: translate .2s ease, color .2s ease; }
@@ -78,11 +81,11 @@ footer a { color: var(--encre); border-bottom: 1px solid var(--filet); padding-b
   <section aria-labelledby="t-projets">
     <h2 id="t-projets">Les projets</h2>
     <ul class="projets">
-      <li><a href="https://snk-records.com"><div><b>SNK Records</b><span>Label indépendant et studio</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="https://444maison.com"><div><b>444</b><span>Streetwear premium</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="https://kloud-music.fr"><div><b>Kloud</b><span>La musique qu'on achète pour la garder</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="mailto:merwane.snk@gmail.com?subject=Doggo"><div><b>Doggo</b><span>L'application de la vie du chien, en préparation</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
-      <li><a href="mailto:merwane.snk@gmail.com?subject=Elevate%20X"><div><b>Elevate X</b><span>Association pour les artistes émergents</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+      <li><a href="https://snk-records.com"><i class="marque" style="--m:url(logos/snk.svg)" aria-hidden="true"></i><div><b>SNK Records</b><span>Label indépendant et studio</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+      <li><a href="https://444maison.com"><i class="marque" style="--m:url(logos/444.svg)" aria-hidden="true"></i><div><b>444</b><span>Streetwear premium</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+      <li><a href="https://kloud-music.fr"><i class="marque" style="--m:url(logos/kloud.svg)" aria-hidden="true"></i><div><b>Kloud</b><span>La musique qu'on achète pour la garder</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+      <li><a href="mailto:merwane.snk@gmail.com?subject=Doggo"><i class="marque" style="--m:url(logos/doggo.svg)" aria-hidden="true"></i><div><b>Doggo</b><span>L'application de la vie du chien, en préparation</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
+      <li><a href="mailto:merwane.snk@gmail.com?subject=Elevate%20X"><i class="marque" style="--m:url(logos/elevate-x.svg)" aria-hidden="true"></i><div><b>Elevate X</b><span>Association pour les artistes émergents</span></div><svg aria-hidden="true"><use href="#fl"/></svg></a></li>
     </ul>
   </section>
 
