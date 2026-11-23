@@ -223,6 +223,27 @@ footer a:hover{color:var(--red)}
 .now .primary{margin-top:14px}
 @view-transition{navigation:auto}
 @media (prefers-reduced-motion:reduce){@view-transition{navigation:none}.hero.cv a.pc{animation:none}}
+/* Clips : écrans 16:9 en carrousel, YouTube chargé seulement au clic (rapide, sans pistage avant lecture) */
+.clips{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:12px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:4px 16px 14px;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.clips::-webkit-scrollbar{display:none}
+.clips li{scroll-snap-align:start;min-width:0}
+.clip{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:14px;overflow:hidden;background:#000;cursor:pointer;box-shadow:0 18px 36px -16px rgba(0,0,0,.9);isolation:isolate}
+.clip img,.clip iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block}
+.clip img{transition:transform .6s var(--ease),filter .6s var(--ease);filter:brightness(.82)}
+.clip:hover img,.clip:focus-visible img{transform:scale(1.04);filter:brightness(1)}
+.clip:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.clip i{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(255,26,26,.6);transition:transform .35s var(--ease)}
+.clip:hover i{transform:scale(1.08)}
+.clip i svg{width:24px;height:24px;fill:#fff;margin-left:3px}
+.clip.on i{display:none}
+.clips p{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.clips p a{color:var(--muted);flex:none}.clips p a:hover{color:var(--red)}
+/* Booking : la porte pro, visible sans chercher le pied de page */
+.book{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:52px;padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.book strong{display:block;font-family:var(--d);font-weight:400;font-size:24px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.book em{display:block;margin-top:6px;font-style:normal;font-size:12px;color:var(--muted)}
+.book a{flex:none;padding:12px 16px;border-radius:999px;background:var(--paper);color:#0b0c0e;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:background .25s,color .25s}
+.book a:hover{background:var(--red);color:#fff}
 .bio{margin:28px 0 0;font-size:14px;line-height:1.65;color:rgba(237,233,225,.84);max-width:60ch}
 </style>
 </head>
@@ -268,6 +289,15 @@ footer a:hover{color:var(--red)}
     <a class="pf" data-k="page-sortie" href="/achille/la-vie-cetait-mieux-avant"><span class="ic"><svg aria-hidden="true"><use href="#play"/></svg></span><span class="lb">Page du son<em>Toutes les plateformes</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
   </nav>
 
+
+  <h2 id="clips">Clips <a href="https://www.youtube.com/@Achille-snk" target="_blank" rel="noopener" data-k="youtube-chaine-clips">La chaîne</a></h2>
+  <ul class="clips" aria-label="Clips de Achille">
+    <li><button class="clip" type="button" data-v="ePkI326PnXY" data-k="clip-la-vie-cetait-mieux-avant" aria-label="Lire le clip La vie c&#x27;était mieux avant"><img src="https://i.ytimg.com/vi/ePkI326PnXY/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"><i><svg aria-hidden="true"><use href="#play"/></svg></i></button><p><span>La vie c&#x27;était mieux avant</span><a href="/achille/la-vie-cetait-mieux-avant" data-k="clip-ecouter-la-vie-cetait-mieux-avant">Écouter</a></p></li>
+    <li><button class="clip" type="button" data-v="pNDf0_rMCYE" data-k="clip-tonton-nanar" aria-label="Lire le clip Tonton Nanar"><img src="https://i.ytimg.com/vi/pNDf0_rMCYE/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"><i><svg aria-hidden="true"><use href="#play"/></svg></i></button><p><span>Tonton Nanar</span><a href="/achille/tonton-nanar" data-k="clip-ecouter-tonton-nanar">Écouter</a></p></li>
+    <li><button class="clip" type="button" data-v="ggV3hJcMmMA" data-k="clip-sarajevo" aria-label="Lire le clip Sarajevo"><img src="https://i.ytimg.com/vi/ggV3hJcMmMA/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"><i><svg aria-hidden="true"><use href="#play"/></svg></i></button><p><span>Sarajevo</span><a href="/achille/sarajevo" data-k="clip-ecouter-sarajevo">Écouter</a></p></li>
+  </ul>
+  <p class="hint" aria-hidden="true">3 clips · fais glisser<svg><use href="#ar"/></svg></p>
+
   <p class="bio">Plume acérée, textes construits, présence brute. Achille sait poser des mots qui restent. Il développe son catalogue avec SNK Records, et il est aussi disponible pour des projets d&#x27;écriture et de toplines extérieurs.</p>
 
   <h2>Suivre</h2>
@@ -286,6 +316,11 @@ footer a:hover{color:var(--red)}
     <li><a href="https://snk-records.com/merwane/reve-de-garce"><img src="/photos/covers/reve-de-garce.jpg" alt="" loading="lazy" decoding="async" width="180" height="180"><span>Rêve de garce · Merwane feat. Achille</span></a></li>
   </ul>
   <p class="hint" aria-hidden="true">4 sorties · fais glisser<svg><use href="#ar"/></svg></p>
+
+  <aside class="book" aria-label="Booking">
+    <span><strong>Booking</strong><em>Concerts, featurings, écriture</em></span>
+    <a href="mailto:lelabelsnk@gmail.com?subject=Booking Achille" data-k="booking-carte">Écrire</a>
+  </aside>
 
   <h2>Le label</h2>
   <nav class="uni u2" aria-label="SNK Records">
@@ -342,5 +377,6 @@ var GC='';
     .catch(function(){b.disabled=false;alert("Erreur d'envoi, réessaie ou écris à lelabelsnk@gmail.com")})})});
 })();
 </script>
+<script>document.querySelectorAll('.clip').forEach(function(b){b.addEventListener('click',function(){if(b.classList.contains('on'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.v+'?autoplay=1&playsinline=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;b.classList.add('on');b.appendChild(f);});});</script>
 </body>
 </html>
