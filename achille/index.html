@@ -238,6 +238,12 @@ footer a:hover{color:var(--red)}
 .clip.on i{display:none}
 .clips p{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .clips p a{color:var(--muted);flex:none}.clips p a:hover{color:var(--red)}
+.subs{display:flex;align-items:center;gap:12px;margin-top:6px;padding:12px 12px 12px 16px;border-radius:16px;background:linear-gradient(120deg,rgba(214,0,43,.22),var(--card) 70%);border:1px solid rgba(214,0,43,.45);transition:border-color .2s,transform .25s var(--ease)}
+.subs svg{width:28px;height:28px;flex:none;color:#ff0033}
+.subs span{flex:1;min-width:0;font-size:12px;line-height:1.4;color:rgba(237,233,225,.84)}.subs strong{display:block;font-weight:500;font-size:14px;color:var(--paper)}
+.subs b{flex:none;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:10px 15px;border-radius:99px;background:#d6002b;color:#fff}
+.subs:hover,.subs:focus-visible{border-color:#ff0033;transform:translateY(-2px)}
+.fo.ig .cta{background:var(--paper);color:#0b0c0e}
 /* Booking : la porte pro, visible sans chercher le pied de page */
 .book{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:52px;padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
 .book strong{display:block;font-family:var(--d);font-weight:400;font-size:24px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
@@ -282,30 +288,28 @@ footer a:hover{color:var(--red)}
     </div>
   </section>
 
-  <nav class="listen" aria-label="Autres façons d'écouter">
-    <a class="pf am" data-k="apple-sortie" href="https://music.apple.com/fr/album/la-vie-c%C3%A9tait-mieux-avant-single/6802696653" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#am"/></svg></span><span class="lb">Apple Music<em>Écouter le son</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
-<a class="pf yt" data-k="youtube-clip" href="https://www.youtube.com/watch?v=ePkI326PnXY" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#yt"/></svg></span><span class="lb">YouTube<em>Le clip</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
-<a class="pf kl" data-k="kloud" href="https://kloud-music.fr/track/track_d96791dc0a6b" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.5 10.1A6.5 6.5 0 0 0 6 8.6a4.75 4.75 0 0 0 .75 9.4h11.5a4 4 0 0 0 .25-7.9Z"/></svg></span><span class="lb">Kloud<em>Écouter sur Kloud</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
-    <a class="pf" data-k="page-sortie" href="/achille/la-vie-cetait-mieux-avant"><span class="ic"><svg aria-hidden="true"><use href="#play"/></svg></span><span class="lb">Page du son<em>Toutes les plateformes</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
-  </nav>
-
-
-  <h2 id="clips">Clips <a href="https://www.youtube.com/@Achille-snk" target="_blank" rel="noopener" data-k="youtube-chaine-clips">La chaîne</a></h2>
+  <h2 id="clips">Les clips</h2>
   <ul class="clips" aria-label="Clips de Achille">
     <li><button class="clip" type="button" data-v="ePkI326PnXY" data-k="clip-la-vie-cetait-mieux-avant" aria-label="Lire le clip La vie c&#x27;était mieux avant"><img src="https://i.ytimg.com/vi/ePkI326PnXY/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"><i><svg aria-hidden="true"><use href="#play"/></svg></i></button><p><span>La vie c&#x27;était mieux avant</span><a href="/achille/la-vie-cetait-mieux-avant" data-k="clip-ecouter-la-vie-cetait-mieux-avant">Écouter</a></p></li>
     <li><button class="clip" type="button" data-v="pNDf0_rMCYE" data-k="clip-tonton-nanar" aria-label="Lire le clip Tonton Nanar"><img src="https://i.ytimg.com/vi/pNDf0_rMCYE/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"><i><svg aria-hidden="true"><use href="#play"/></svg></i></button><p><span>Tonton Nanar</span><a href="/achille/tonton-nanar" data-k="clip-ecouter-tonton-nanar">Écouter</a></p></li>
     <li><button class="clip" type="button" data-v="ggV3hJcMmMA" data-k="clip-sarajevo" aria-label="Lire le clip Sarajevo"><img src="https://i.ytimg.com/vi/ggV3hJcMmMA/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"><i><svg aria-hidden="true"><use href="#play"/></svg></i></button><p><span>Sarajevo</span><a href="/achille/sarajevo" data-k="clip-ecouter-sarajevo">Écouter</a></p></li>
   </ul>
   <p class="hint" aria-hidden="true">3 clips · fais glisser<svg><use href="#ar"/></svg></p>
+  <a class="subs" data-k="youtube-abo-clips" href="https://www.youtube.com/@Achille-snk?sub_confirmation=1" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#yt"/></svg><span><strong>La chaîne de Achille</strong>Les prochains clips en premier</span><b>S'abonner</b></a>
+
+  <nav class="listen" aria-label="Autres façons d'écouter">
+    <a class="pf kl" data-k="kloud" href="https://kloud-music.fr/track/track_d96791dc0a6b" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.5 10.1A6.5 6.5 0 0 0 6 8.6a4.75 4.75 0 0 0 .75 9.4h11.5a4 4 0 0 0 .25-7.9Z"/></svg></span><span class="lb">Kloud<em>Écouter sur Kloud</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
+    <a class="pf" data-k="page-sortie" href="/achille/la-vie-cetait-mieux-avant"><span class="ic"><svg aria-hidden="true"><use href="#play"/></svg></span><span class="lb">Page du son<em>Toutes les plateformes</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
+  </nav>
 
   <p class="bio">Plume acérée, textes construits, présence brute. Achille sait poser des mots qui restent. Il développe son catalogue avec SNK Records, et il est aussi disponible pour des projets d&#x27;écriture et de toplines extérieurs.</p>
 
-  <h2>Suivre</h2>
+  <h2>Suivre Achille</h2>
   <nav class="follow" aria-label="Réseaux sociaux">
-    <a class="fo row ig" data-k="instagram" href="https://www.instagram.com/achille.snk/" target="_blank" rel="noopener me"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="url(#ig)" d="M12 2.9c2.96 0 3.31.01 4.48.07 2.55.11 3.44 1.02 3.55 3.55.06 1.17.07 1.52.07 4.48s-.01 3.31-.07 4.48c-.11 2.53-1 3.440-3.55 3.55-1.17.06-1.52.07-4.48.07s-3.31-.01-4.48-.07c-2.55-.11-3.44-1.02-3.55-3.55C3.91 14.31 3.9 13.96 3.9 11s.01-3.31.07-4.48C4.08 3.99 4.97 3.08 7.52 2.97 8.69 2.91 9.04 2.9 12 2.9ZM12 1C8.99 1 8.61 1.01 7.43 1.07 3.4 1.25 1.26 3.4 1.07 7.43 1.01 8.61 1 8.99 1 12s.01 3.39.07 4.57c.18 4.03 2.33 6.17 6.36 6.36 1.18.06 1.56.07 4.57.07s3.39-.01 4.57-.07c4.03-.18 6.18-2.33 6.36-6.36.06-1.180.07-1.56.07-4.57s-.01-3.39-.07-4.57C22.75 3.4 20.6 1.26 16.57 1.07 15.39 1.01 15.01 1 12 1Zm0 5.35a5.65 5.65 0 1 0 0 11.3 5.65 5.65 0 0 0 0-11.3Zm0 9.32a3.67 3.67 0 1 1 0-7.34 3.67 3.67 0 0 1 0 7.34Zm5.87-10.86a1.32 1.32 0 1 0 0 2.64 1.32 1.32 0 0 0 0-2.64Z"/></svg><span><strong>Instagram</strong><em>@achille.snk</em></span></a>
-    <a class="fo row sp" data-k="spotify-artiste" href="https://open.spotify.com/artist/6vpT22NKThtnueaG9PsRoN" target="_blank" rel="noopener me"><svg aria-hidden="true"><use href="#sp"/></svg><span><strong>Spotify</strong><em>Ne rate aucune sortie</em></span></a>
-    <a class="fo row am" data-k="apple-artiste" href="https://music.apple.com/fr/artist/achille/1873351270" target="_blank" rel="noopener me"><svg aria-hidden="true"><use href="#am"/></svg><span><strong>Apple Music</strong><em>Toute la discographie</em></span></a>
+    <a class="fo row sp" data-k="spotify-artiste" href="https://open.spotify.com/artist/6vpT22NKThtnueaG9PsRoN" target="_blank" rel="noopener me"><svg aria-hidden="true"><use href="#sp"/></svg><span><strong>Spotify</strong><em>Ne rate aucune sortie</em></span><span class="cta">Suivre</span></a>
     <a class="fo row yt" data-k="youtube-chaine" href="https://www.youtube.com/@Achille-snk?sub_confirmation=1" target="_blank" rel="noopener me"><svg aria-hidden="true"><use href="#yt"/></svg><span><strong>YouTube</strong><em>Les clips</em></span><span class="cta">S'abonner</span></a>
+    <a class="fo row ig" data-k="instagram" href="https://www.instagram.com/achille.snk/" target="_blank" rel="noopener me"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="url(#ig)" d="M12 2.9c2.96 0 3.31.01 4.48.07 2.55.11 3.44 1.02 3.55 3.55.06 1.17.07 1.52.07 4.48s-.01 3.31-.07 4.48c-.11 2.53-1 3.440-3.55 3.55-1.17.06-1.52.07-4.48.07s-3.31-.01-4.48-.07c-2.55-.11-3.44-1.02-3.55-3.55C3.91 14.31 3.9 13.96 3.9 11s.01-3.31.07-4.48C4.08 3.99 4.97 3.08 7.52 2.97 8.69 2.91 9.04 2.9 12 2.9ZM12 1C8.99 1 8.61 1.01 7.43 1.07 3.4 1.25 1.26 3.4 1.07 7.43 1.01 8.61 1 8.99 1 12s.01 3.39.07 4.57c.18 4.03 2.33 6.17 6.36 6.36 1.18.06 1.56.07 4.57.07s3.39-.01 4.57-.07c4.03-.18 6.18-2.33 6.36-6.36.06-1.180.07-1.56.07-4.57s-.01-3.39-.07-4.57C22.75 3.4 20.6 1.26 16.57 1.07 15.39 1.01 15.01 1 12 1Zm0 5.35a5.65 5.65 0 1 0 0 11.3 5.65 5.65 0 0 0 0-11.3Zm0 9.32a3.67 3.67 0 1 1 0-7.34 3.67 3.67 0 0 1 0 7.34Zm5.87-10.86a1.32 1.32 0 1 0 0 2.64 1.32 1.32 0 0 0 0-2.64Z"/></svg><span><strong>Instagram</strong><em>@achille.snk</em></span><span class="cta">Suivre</span></a>
+    <a class="fo row am" data-k="apple-artiste" href="https://music.apple.com/fr/artist/achille/1873351270" target="_blank" rel="noopener me"><svg aria-hidden="true"><use href="#am"/></svg><span><strong>Apple Music</strong><em>Toute la discographie</em></span></a>
   </nav>
 
   <h2>Discographie <a href="https://snk-records.com/sorties" data-k="label-sorties">Tout le label</a></h2>

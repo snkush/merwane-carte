@@ -150,6 +150,27 @@ footer a:hover{color:var(--red)}
 
 @media (min-width:760px){.art{width:360px;margin-top:36px}.disco{grid-auto-columns:30%}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* Clip intégré : YouTube chargé seulement au clic ; abonnement juste dessous */
+.clip{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;border-radius:16px;overflow:hidden;background:#000;cursor:pointer;box-shadow:0 18px 36px -16px rgba(0,0,0,.9);isolation:isolate}
+.clip img,.clip iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block}
+.clip img{transition:transform .6s var(--ease),filter .6s var(--ease);filter:brightness(.82)}
+.clip:hover img,.clip:focus-visible img{transform:scale(1.04);filter:brightness(1)}
+.clip:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
+.clip i{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:#ff1a1a;display:grid;place-items:center;box-shadow:0 10px 30px -6px rgba(255,26,26,.6);transition:transform .35s var(--ease)}
+.clip:hover i{transform:scale(1.08)}
+.clip i svg{width:24px;height:24px;fill:#fff;margin-left:3px}
+.clip.on i{display:none}
+.subs{display:flex;align-items:center;gap:12px;margin-top:10px;padding:12px 12px 12px 16px;border-radius:16px;background:linear-gradient(120deg,rgba(214,0,43,.22),var(--card-solid) 70%);border:1px solid rgba(214,0,43,.45);transition:border-color .2s,transform .25s var(--ease)}
+.subs svg{width:28px;height:28px;flex:none;color:#ff0033}
+.subs span{flex:1;min-width:0;font-size:12px;line-height:1.4;color:rgba(237,233,225,.84)}.subs strong{display:block;font-weight:500;font-size:14px;color:var(--paper)}
+.subs b{flex:none;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:10px 15px;border-radius:99px;background:#d6002b;color:#fff}
+.subs:hover,.subs:focus-visible{border-color:#ff0033;transform:translateY(-2px)}
+.drops .dk{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.drops .dk a{flex:1 1 150px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:12px;border:1px solid rgba(237,233,225,.3);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:border-color .2s,background .2s}
+.drops .dk a:hover{border-color:var(--paper);background:rgba(237,233,225,.06)}
+.drops .dk svg{width:18px;height:18px}
+.drops .dk a[data-k=drops-spotify] svg{color:#1ed760}.drops .dk a[data-k=drops-youtube] svg{color:#ff0033}
+.drops.gh .drops-s{margin-bottom:0}
 </style>
 </head>
 <body style="--cover:url(/photos/covers/sarajevo.jpg)">
@@ -185,23 +206,21 @@ footer a:hover{color:var(--red)}
     </div>
     <nav class="listen" aria-label="Autres façons d'écouter">
       <a class="pf am" data-k="apple" href="https://music.apple.com/fr/album/sarajevo-single/1873068170" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#am"/></svg></span><span class="lb">Apple Music<em>Écouter</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
-      <a class="pf yt" data-k="youtube" href="https://www.youtube.com/watch?v=ggV3hJcMmMA" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#yt"/></svg></span><span class="lb">YouTube<em>Le clip</em></span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a>
     </nav>
     <a class="other" data-k="autres-plateformes" href="https://distrokid.com/hyperfollow/achille9/sarajevo" target="_blank" rel="noopener">Deezer, Amazon &amp; autres plateformes</a>
   </section>
 
-  <div class="drops">
+  <h2 id="clip">Le clip</h2>
+  <button class="clip" type="button" data-v="ggV3hJcMmMA" data-k="clip-lecture" aria-label="Lire le clip Sarajevo"><img src="https://i.ytimg.com/vi/ggV3hJcMmMA/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"><i><svg aria-hidden="true"><use href="#play"/></svg></i></button>
+  <a class="subs" data-k="youtube-abo-clip" href="https://www.youtube.com/@Achille-snk?sub_confirmation=1" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#yt"/></svg><span><strong>La chaîne de Achille</strong>Les prochains clips en premier</span><b>S'abonner</b></a>
+
+  <div class="drops gh">
     <p class="drops-t">Les drops en avant-première</p>
-    <p class="drops-s">Nouveaux sons, exclus Kloud, clips : sois prévenu en premier.</p>
-    <form name="drops" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="dropsForm">
-      <input type="hidden" name="form-name" value="drops">
-      <input type="hidden" name="source" value="achille/sarajevo">
-      <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
-      <input type="email" name="email" required placeholder="ton@email.com" aria-label="Email" autocomplete="email">
-      <button type="submit">J'en suis</button>
-    </form>
-    <p class="ok" role="status">C'est noté, tu es sur la liste.</p>
-    <small>Ton email sert uniquement aux annonces de SNK Records. Désinscription à tout moment.</small>
+    <p class="drops-s">Nouveaux sons, exclus Kloud, clips : suis Achille pour les recevoir en premier.</p>
+    
+    
+    <p class="dk"><a data-k="drops-spotify" href="https://open.spotify.com/artist/6vpT22NKThtnueaG9PsRoN" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#sp"/></svg>Suivre sur Spotify</a><a data-k="drops-youtube" href="https://www.youtube.com/@Achille-snk?sub_confirmation=1" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#yt"/></svg>S&#39;abonner YouTube</a></p>
+    
   </div>
 
   <h2>Autres sorties <a href="/achille" data-k="retour-artiste-bas">Tout Achille</a></h2>
@@ -224,6 +243,7 @@ footer a:hover{color:var(--red)}
   </a>
 </div>
 
+<script>document.querySelectorAll('.clip').forEach(function(b){b.addEventListener('click',function(){if(b.classList.contains('on'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.v+'?autoplay=1&playsinline=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;b.classList.add('on');b.appendChild(f);});});</script>
 <script>
 var GC='',PAGE='achille-sarajevo';
 (function(){
