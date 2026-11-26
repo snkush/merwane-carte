@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Merwane</title>
-<meta name="description" content="Merwane, Marseille. SNK Records, 444, Kloud, Doggo, Elevate X.">
-<meta name="robots" content="noindex">
+<title>Merwane · Fondateur de SNK Records, 444 et Kloud</title>
+<meta name="description" content="Merwane, artiste et entrepreneur à Marseille. Fondateur de SNK Records, 444 et Kloud. Contact, projets et musique.">
+<link rel="canonical" href="https://merwane.snk-records.com/">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Merwane">
+<meta property="og:title" content="Merwane · Fondateur de SNK Records, 444 et Kloud">
 <meta property="og:description" content="Marseille · Marrakech · Barcelone. SNK Records, 444, Kloud, Doggo, Elevate X.">
 <meta property="og:url" content="https://merwane.snk-records.com/">
 <meta property="og:image" content="https://merwane.snk-records.com/og.png">
@@ -63,6 +63,8 @@ h1 span { display: inline-block; animation: monte 1s cubic-bezier(.16, 1, .3, 1)
 .lieux { position: absolute; left: 24px; right: 24px; bottom: 26px; max-width: 412px; margin-inline: auto; display: flex; justify-content: space-between; font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; line-height: 1; color: #c4c4c4; mix-blend-mode: difference; }
 .lieux span { animation: monte 1s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(var(--i, 0) * 120ms + 1.1s); }
 .lieux span:nth-child(2) { --i: 1; } .lieux span:nth-child(3) { --i: 2; }
+.role { margin-top: 32px; text-align: center; }
+.role + .actions { margin-top: 20px; }
 .lieu { margin-top: 14px; font-size: 12px; letter-spacing: .22em; text-indent: .22em; text-transform: uppercase; color: var(--doux); }
 .actions { margin: 32px 0 56px; display: grid; gap: 12px; }
 /* Sous le bouton principal, les autres façons de garder le lien : écrire, suivre, faire passer la page. */
@@ -190,6 +192,7 @@ section + section { margin-top: 72px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .lune, .lune::after, h1, h1 span, .lieux, .lieux span, .tuiles a::before, .disque, .astre, main h2, .tuiles li, .une, .pochettes, main .projets { animation: none; } @view-transition { navigation: none; } }
 </style>
 <script>document.documentElement.classList.add("js")</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Merwane","url":"https://merwane.snk-records.com/","jobTitle":"Fondateur","homeLocation":{"@type":"Place","name":"Marseille"},"worksFor":[{"@type":"Organization","name":"SNK Records","url":"https://snk-records.com"},{"@type":"Organization","name":"444","url":"https://444maison.com"},{"@type":"Organization","name":"Kloud","url":"https://kloud-music.fr"}],"sameAs":["https://www.instagram.com/merwane.snk/","https://www.youtube.com/channel/UC0PBdlaosX3D3BSyb91ibqQ","https://open.spotify.com/artist/5RMEcGdJoju07ec83humPY"]}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="fl" viewBox="0 0 18 18"><path d="M3 9h12M10 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol></svg>
@@ -199,8 +202,10 @@ section + section { margin-top: 72px; }
   <p class="lieux" aria-label="Marseille, Marrakech, Barcelone"><span aria-hidden="true">Marseille</span><span aria-hidden="true">Marrakech</span><span aria-hidden="true">Barcelone</span></p>
 </header>
 <main>
+  <p class="lieu role">Artiste · Fondateur</p>
   <div class="actions">
     <a class="bouton plein" href="merwane.vcf" download="Merwane.vcf">Enregistrer le contact</a>
+    <a class="bouton" href="merwane/">Écouter ma musique</a>
     <div class="rang">
       <a class="bouton" href="mailto:merwane.snk@gmail.com">Écrire</a>
       <a class="bouton" href="https://www.instagram.com/merwane.snk/">Instagram</a>
@@ -259,6 +264,7 @@ section + section { margin-top: 72px; }
     <li><a href="mailto:merwane.snk@gmail.com">merwane.snk@gmail.com</a></li>
     <li><a href="https://www.instagram.com/merwane.snk/">Instagram</a></li>
     <li><a href="https://www.youtube.com/channel/UC0PBdlaosX3D3BSyb91ibqQ/videos">YouTube</a></li>
+    <li><a href="merwane/">Musique</a></li>
   </ul>
 </footer>
 <div class="barre"><a class="bouton plein" href="merwane.vcf" download="Merwane.vcf" tabindex="-1">Enregistrer le contact</a></div>
